@@ -15,6 +15,11 @@
         Read Only
         <span class="custom-control-indicator"></span>
     </label>
+    <label class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" [ngModel]="options.viewMode" (ngModelChange)="toggleViewMode($event)">
+        View Mode
+        <span class="custom-control-indicator"></span>
+    </label>
     <br><strong>FORM DATA:</strong><br><pre>{{user | json}}</pre><br>
     <br><strong>FORM STATE:</strong><br><pre>{{options.formState | json}}</pre><br>
     <hr>

@@ -5,13 +5,14 @@ import { FieldType, FormlyFieldConfig } from '../../core/core';
 @Component({
   selector: 'formly-field-checkbox',
   template: `
-    <label class="custom-control custom-checkbox">
+    <label *ngIf="!options.viewMode" class="custom-control custom-checkbox">
       <input type="checkbox" [formControl]="formControl"
         *ngIf="!to.hidden" value="on"
         [formlyAttributes]="field" class="custom-control-input">
         {{to.label}}
         <span class="custom-control-indicator"></span>
     </label>
+    <span *ngIf="options.viewMode" class="form-control  view-mode">{{formControl.value}}<span>
   `,
 })
 export class FormlyFieldCheckbox extends FieldType {

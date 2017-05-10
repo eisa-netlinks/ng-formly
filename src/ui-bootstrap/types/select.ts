@@ -17,7 +17,7 @@ export class SelectOption {
 @Component({
   selector: 'formly-field-select',
   template: `
-    <select [formControl]="formControl" class="form-control" [formlyAttributes]="field">
+    <select *ngIf="!options.viewMode" [formControl]="formControl" class="form-control" [formlyAttributes]="field">
       <option value="" *ngIf="to.placeholder">{{to.placeholder}}</option>
       <ng-container *ngFor="let item of selectOptions">
        <optgroup *ngIf="item.group" label="{{item.label}}">
@@ -28,6 +28,7 @@ export class SelectOption {
        <option *ngIf="!item.group" [value]="item.value">{{item.label}}</option>
       </ng-container>
     </select>
+    <span *ngIf="options.viewMode" class="form-control  view-mode">{{formControl.value}}<span>
   `,
 })
 export class FormlyFieldSelect extends FieldType {

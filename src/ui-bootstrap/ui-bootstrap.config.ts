@@ -40,7 +40,7 @@ export const BOOTSTRAP_FORMLY_CONFIG: ConfigOption = {
     {
       name: 'input',
       component: FormlyFieldInput,
-      wrappers: ['fieldset', 'label'],
+      wrappers: ['fieldset', ],
     },
     {
       name: 'checkbox',
@@ -55,7 +55,7 @@ export const BOOTSTRAP_FORMLY_CONFIG: ConfigOption = {
     {
       name: 'select',
       component: FormlyFieldSelect,
-      wrappers: ['fieldset', 'label'],
+      wrappers: ['fieldset', ],
     },
     {
       name: 'textarea',

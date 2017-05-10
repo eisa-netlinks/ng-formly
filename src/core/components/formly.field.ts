@@ -14,10 +14,12 @@ import { map } from 'rxjs/operator/map';
 @Component({
   selector: 'formly-field',
   template: `
-    <ng-container #fieldComponent></ng-container>
+    <td *ngIf="field.key && field.type " class="border-left-line" ><label [attr.for]="id" class="form-control-label">{{field.templateOptions.label}}</label></td>
+    <td><ng-container #fieldComponent></ng-container></td>
     <div *ngIf="field.template && !field.fieldGroup" [innerHtml]="field.template"></div>
-  `,
-})
+  `
+}
+)
 export class FormlyField implements DoCheck, OnInit, OnDestroy {
   @Input() model: any;
   @Input() form: FormGroup;

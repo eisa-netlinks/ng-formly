@@ -12,6 +12,7 @@ export interface FormlyFieldConfig {
     show?: boolean;
     [additionalProperties: string]: any;
   };
+  display?: string;
   validators?: any;
   asyncValidators?: any;
   template?: string;

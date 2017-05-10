@@ -4,8 +4,9 @@ import { FieldType } from '../../core/core';
 @Component({
   selector: 'formly-field-input',
   template: `
-    <input [type]="type" [formControl]="formControl" class="form-control"
+    <input *ngIf="!options.viewMode" [type]="type" [formControl]="formControl" class="form-control"
       [formlyAttributes]="field" [ngClass]="{'form-control-danger': valid}">
+    <span *ngIf="options.viewMode" class="form-control view-mode">{{formControl.value}}<span>
     `,
 })
 export class FormlyFieldInput extends FieldType {
