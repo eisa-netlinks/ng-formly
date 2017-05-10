@@ -50,7 +50,7 @@ export const BOOTSTRAP_FORMLY_CONFIG: ConfigOption = {
     {
       name: 'radio',
       component: FormlyFieldRadio,
-      wrappers: ['fieldset', 'label'],
+      wrappers: ['fieldset'],
     },
     {
       name: 'select',
@@ -60,12 +60,12 @@ export const BOOTSTRAP_FORMLY_CONFIG: ConfigOption = {
     {
       name: 'textarea',
       component: FormlyFieldTextArea,
-      wrappers: ['fieldset', 'label'],
+      wrappers: ['fieldset'],
     },
     {
       name: 'multicheckbox',
       component: FormlyFieldMultiCheckbox,
-      wrappers: ['fieldset', 'label'],
+      wrappers: ['fieldset'],
     },
   ],
   wrappers: [

@@ -16,10 +16,11 @@ import { FormlyPanelWrapper } from './panel.wrapper';
 import { SuperHerosService } from './super-heros';
 import { tdWrapperComponent } from './tdWrapper';
 
+
 @Component({
   selector: 'formly-demo-hello-app',
   templateUrl: './template.html',
-  styleUrls:[`
+  styles:[`
       /deep/ .border-left-line{
           border-right:1px solid #ddd;
       }
@@ -48,6 +49,20 @@ import { tdWrapperComponent } from './tdWrapper';
       /deep/ formly-group{
         display:table;
         width:100%;
+      }
+      
+      /deep/ .view-mode{
+        border:0px;
+      }
+      /deep/ .custom-control-input{
+        position: relative;
+        display: inline;
+        opacity: 1;
+        z-index:1;
+      }
+
+      /deep/ .custom-control{
+        padding-left:0;
       }
   `]
 })
@@ -148,8 +163,41 @@ export class HelloApp {
               uniqueUserName: (control: FormControl) => new Promise(resolve => resolve( control.value !== 'paul')),
             },
           },
-          ]},
-
+          {
+            type: 'multicheckbox',
+            key: 'interest',
+            
+            templateOptions: {
+              options: [{
+                key: 'sports',
+                value: 'Sports',
+              }, {
+                key: 'movies',
+                value: 'Movies',
+              }, {
+                key: 'others',
+                value: 'Others',
+              }],
+              label: 'Interest',
+              description: 'Select areas which you are interested',
+            }
+          },
+          {
+              type: 'radio',
+              key: 'title1',
+              templateOptions: {
+                options: [{
+                  label: 'Mr.',
+                  value: 'mr',
+                }, {
+                  label: 'Mrs',
+                  value: 'mrs',
+                }],
+                label: 'Title 1',
+                description: 'Select a title that suits your description',
+              },
+            }
+          ]},          
         {
           // wrappers:['td'],  
           // display:'table-row',
@@ -186,6 +234,39 @@ export class HelloApp {
               },
             },
           }, 
+          {
+            key:'x',
+            type:'checkbox',
+            templateOptions:{
+              label:'X'
+            }
+          },
+          {
+            key: 'checked',
+            type: 'checkbox',
+            templateOptions: {
+              label: 'Check me out',
+              description: 'If you want to check me out, check this box',
+            },
+          },
+          {
+            key: 'textAreaVal',
+            type: 'textarea',
+            modelOptions: {
+              debounce: {
+                default: 2000,
+                blur: 0,
+              },
+              updateOn: 'default blur',
+            },
+            focus: true,
+            templateOptions: {
+              rows: 5,
+              cols: 20,
+              label: 'Message',
+              description: 'Please enter atleast 150 characters',
+            },
+          }
           ]}       
       ]},      
       
@@ -466,20 +547,21 @@ export class HelloApp {
     this.user = {
       email: 'email@gmail.com',
       // checked: true,
+      x:true,
       username:'eisa',
       select: 'male',
       selectSuperHero: 'captain_america',
-      // title1: 'mr',
+      title1: 'mr',
       // title2: 'mrs',
       // toggleVal: true,
       // address: {
       //   street: '604 Causley Eve',
       // },
-      // interest: {
-      //   movies: false,
-      //   sports: false,
-      //   others: true,
-      // },
+      interest: {
+        movies: false,
+        sports: false,
+        others: true,
+      },
       // hobbies: {
       //   movies: true,
       //   sports: false,
@@ -502,7 +584,7 @@ export class HelloApp {
       formState: {
         readOnly: false,
       },
-      //  viewMode:true
+       viewMode:true
     };
 
   }

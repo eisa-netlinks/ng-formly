@@ -28,7 +28,7 @@ export class SelectOption {
        <option *ngIf="!item.group" [value]="item.value">{{item.label}}</option>
       </ng-container>
     </select>
-    <span *ngIf="options.viewMode" class="form-control  view-mode">{{formControl.value}}<span>
+    <span *ngIf="options.viewMode" class="form-control  view-mode">{{valueLabel}}<span>
   `,
 })
 export class FormlyFieldSelect extends FieldType {
@@ -60,5 +60,28 @@ export class FormlyFieldSelect extends FieldType {
       }
     });
     return options;
+  }
+
+  get valueLabel(){
+    let label;
+    outSideOfLoop:
+    for(let option of this.selectOptions){
+
+      if(option.group){
+        for(let optionInner of option.group){
+          if(optionInner.value === this.formControl.value){
+            label= optionInner.label;
+            break outSideOfLoop;
+          }
+        }
+      }
+
+      if(option.value === this.formControl.value){
+        label= option.label;
+        break outSideOfLoop;
+      }
+    }
+
+    return label;
   }
 }

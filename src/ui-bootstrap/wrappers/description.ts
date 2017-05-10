@@ -5,7 +5,7 @@ import { FieldWrapper } from '../../core/core';
   selector: 'formly-wrapper-description',
   template: `
     <ng-container #fieldComponent></ng-container>
-    <div>
+    <div *ngIf="!options.viewMode">
       <small class="text-muted">{{to.description}}</small>
     </div>
   `,
