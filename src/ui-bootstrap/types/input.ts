@@ -6,7 +6,7 @@ import { FieldType } from '../../core/core';
   template: `
     <input *ngIf="!options.viewMode" [type]="type" [formControl]="formControl" class="form-control"
       [formlyAttributes]="field" [ngClass]="{'form-control-danger': valid}">
-    <span *ngIf="options.viewMode" class="form-control view-mode">{{formControl.value}}<span>
+    <span *ngIf="options.viewMode" class="form-control view-mode">{{type !== 'date' ? formControl.value : formControl.value | date }}<span>
     `,
 })
 export class FormlyFieldInput extends FieldType {
