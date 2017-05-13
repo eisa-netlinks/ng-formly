@@ -14,7 +14,8 @@ import { map } from 'rxjs/operator/map';
 @Component({
   selector: 'formly-field',
   template: `
-    <td *ngIf="field.key && field.type " class="border-left-line" ><label [attr.for]="id" class="form-control-label">{{field.templateOptions.label}}</label></td>
+    <td *ngIf="field.section"><label>{{field.section}}</label></td>
+    <td *ngIf="!field.section && field.key && field.type " class="border-left-line" ><label [attr.for]="id" class="form-control-label">{{field.templateOptions.label}}</label></td>
     <td><ng-container #fieldComponent></ng-container></td>
     <div *ngIf="field.template && !field.fieldGroup" [innerHtml]="field.template"></div>
   `
