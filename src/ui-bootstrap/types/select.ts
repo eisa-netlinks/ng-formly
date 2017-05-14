@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FieldType } from '../../core/core';
+import { FormControl, AbstractControl } from '@angular/forms';
+import { FieldType, FormlyFieldConfig } from '../../core/core';
+
 
 export class SelectOption {
   label: string;
@@ -83,5 +85,13 @@ export class FormlyFieldSelect extends FieldType {
     }
 
     return label;
+  }
+
+    static createControl(model: any, field: FormlyFieldConfig): AbstractControl {
+    return new FormControl(
+        { value: model || '', disabled: field.templateOptions.disabled },
+        field.validators ? field.validators.validation : undefined,
+        field.asyncValidators ? field.asyncValidators.validation : undefined,
+      );
   }
 }

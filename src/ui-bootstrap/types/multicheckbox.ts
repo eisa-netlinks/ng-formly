@@ -8,7 +8,7 @@ import { FieldType, FormlyFieldConfig } from '../../core/core';
     <div *ngFor="let option of to.options" class="checkbox">
         <label class="custom-control custom-checkbox">
             <input type="checkbox" [value]="option.value" [formControl]="formControl.get(option.key)"
-            [attr.disabled]="options.viewMode" [formlyAttributes]="field" class="custom-control-input">
+            [attr.disabled]="options.viewMode ? true : null" [formlyAttributes]="field" class="custom-control-input">
             {{option.value}}
         </label>
     </div>

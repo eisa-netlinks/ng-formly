@@ -550,7 +550,7 @@ export class HelloApp {
       // checked: true,
       x:true,
       username:'eisa',
-      select: 'male',
+      // select: 'male',
       selectSuperHero: 'captain_america',
       title1: 'mr',
       // title2: 'mrs',
@@ -581,11 +581,12 @@ export class HelloApp {
       // ],
     };
 
+
     this.options = {
       formState: {
         readOnly: false,
       },
-       viewMode:true
+       viewMode:false
     };
 
   }
