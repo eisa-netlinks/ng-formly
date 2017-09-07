@@ -88,45 +88,6 @@ export class HelloApp {
     };
 
     let userFields: Array<FormlyFieldConfig> = [
-      // {
-      //   type: 'radio',
-      //   key: 'title1',
-      //   formControl: new FormControl('mrs'),
-      //   templateOptions: {
-      //     options: [{
-      //       key: 'mr',
-      //       value: 'Mr.',
-      //     }, {
-      //       key: 'mrs',
-      //       value: 'Mrs',
-      //     }],
-      //     label: 'Title 1',
-      //     description: 'Select a title that suits your description',
-      //   },
-      // }, {
-      //   type: 'radio',
-      //   key: 'title2',
-      //   hide: true,
-      //   templateOptions: {
-      //     options: [{
-      //       key: 'mr',
-      //       value: 'Mr.',
-      //     }, {
-      //       key: 'mrs',
-      //       value: 'Mrs',
-      //     }],
-      //     label: 'Title 2',
-      //     description: 'Select a title that suits your description',
-      //   },
-      // },
-      
-      {
-        display:'table-row',
-        fieldGroup:[
-        {
-          // wrappers:['td'], 
-          // display:'table-row',
-          fieldGroup:[
           {
             className: 'col-md-6',
             key: 'email',
@@ -139,409 +100,136 @@ export class HelloApp {
             validators: {
               validation: Validators.compose([Validators.required, ValidationService.emailValidator]),
             },
-          }, {
-            className: 'col-md-6',
-            id: 'username',
-            key: 'username',
-            type: 'input',
-            templateOptions: {
-              label: 'Username',
-              placeholder: 'Username',
-              description: 'Existing username: john, tom, paul',
-              required: true,
-            },
-            validation: {
-              show: true,
-            },
-            validators: {
-              validation: Validators.maxLength(8),
-              custom: (control: FormControl) => control.value !== 'tom',
-            },
-            asyncValidators: {
-              validation: (control: FormControl) =>
-              new Promise(resolve => resolve( control.value !== 'john' ? null : { uniqueUsername: true })),
-              uniqueUserName: (control: FormControl) => new Promise(resolve => resolve( control.value !== 'paul')),
-            },
-          },
-          {
-            type: 'multicheckbox',
-            key: 'interest',
-            
-            templateOptions: {
-              options: [{
-                key: 'sports',
-                value: 'Sports',
-              }, {
-                key: 'movies',
-                value: 'Movies',
-              }, {
-                key: 'others',
-                value: 'Others',
-              }],
-              label: 'Interest',
-              description: 'Select areas which you are interested',
-            }
-          },
-          {
-              type: 'radio',
-              key: 'title1',
-              templateOptions: {
-                options: [{
-                  label: 'Mr.',
-                  value: 'mr',
-                }, {
-                  label: 'Mrs',
-                  value: 'mrs',
-                }],
-                label: 'Title 1',
-                description: 'Select a title that suits your description',
-              },
-            }
-          ]},          
-        {
-          // wrappers:['td'],  
-          // display:'table-row',
-          fieldGroup:[
-          {
-            className: 'col-md-4',
-            key: 'select',
-            type: 'select',
-            templateOptions: {
-              options: [{
-                label: 'Male',
-                value: 'male',
-              }, {
-                label: 'Female',
-                value: 'female',
-              }],
-              label: 'Gender',
-              placeholder: 'Select Gender',
-            },
-          }, {
-            className: 'col-md-4',
-            key: 'selectSuperHero',
-            type: 'select',
-            templateOptions: {
-              options: [],
-              label: 'Gender',
-              labelProp: 'name',
-              groupProp: 'gender',
-              placeholder: 'Select Gender',
-            },
-            lifecycle: {
-              onInit: (form, field) => {
-                field.templateOptions.options = this.sh.get();
-              },
-            },
           }, 
-          {
-            key:'x',
-            type:'checkbox',
-            templateOptions:{
-              label:'X'
-            }
-          },
-          {
-            key: 'checked',
-            type: 'checkbox',
-            templateOptions: {
-              label: 'Check me out',
-              description: 'If you want to check me out, check this box',
-            },
-          },
-          {
-            key: 'textAreaVal',
-            type: 'textarea',
-            modelOptions: {
-              debounce: {
-                default: 2000,
-                blur: 0,
-              },
-              updateOn: 'default blur',
-            },
-            focus: true,
-            templateOptions: {
-              rows: 5,
-              cols: 20,
-              label: 'Message',
-              description: 'Please enter atleast 150 characters',
-            },
-          },
-          {section:"section",template:' '}
-          ]}       
-      ]},      
-      
-      //  {
-      //   className: 'row',
-      //   fieldGroup: [
-        //  {
-        //   className: 'col-md-6',
-        //   key: 'password',
-        //   type: 'input',
-        //   templateOptions: {
-        //     type: 'password',
-        //     label: 'Password',
-        //     placeholder: 'Password',
-        //     keyup: (field, formControl: FormControl) => {
-        //       console.log(formControl.valid ? 'Valid' : 'Invalid');
-        //     },
-        //   },
-        //   validators: {
-        //     validation: Validators.compose([Validators.required, Validators.maxLength(10), Validators.minLength(2)]),
-        //   },
-        // }, {
-        //   className: 'col-md-6',
-        //   key: 'confirmPassword',
-        //   type: 'input',
-        //   templateOptions: {
-        //     type: 'password',
-        //     label: 'Confirm Password',
-        //     placeholder: 'Confirm Password',
-        //     tabindex: 1,
-        //   },
-        //   validators: {
-        //     validation: ValidationService.confirmPassword(this.form, 'password'),
-        //   },
-        // }, {
-        //   className: 'section-label',
-        //   template: '<br/><hr/>',
-        // },
-      //   ],
-      // }, 
+          // {
+          //   className: 'col-md-6',
+          //   id: 'username',
+          //   key: 'username',
+          //   type: 'input',
+          //   templateOptions: {
+          //     label: 'Username',
+          //     placeholder: 'Username',
+          //     description: 'Existing username: john, tom, paul',
+          //     required: true,
+          //   },
+          //   validation: {
+          //     show: true,
+          //   },
+          //   validators: {
+          //     validation: Validators.maxLength(8),
+          //     custom: (control: FormControl) => control.value !== 'tom',
+          //   },
+          //   asyncValidators: {
+          //     validation: (control: FormControl) =>
+          //     new Promise(resolve => resolve( control.value !== 'john' ? null : { uniqueUsername: true })),
+          //     uniqueUserName: (control: FormControl) => new Promise(resolve => resolve( control.value !== 'paul')),
+          //   },
+          // },
+          // {
+          //   type: 'multicheckbox',
+          //   key: 'interest',
+            
+          //   templateOptions: {
+          //     options: [{
+          //       key: 'sports',
+          //       value: 'Sports',
+          //     }, {
+          //       key: 'movies',
+          //       value: 'Movies',
+          //     }, {
+          //       key: 'others',
+          //       value: 'Others',
+          //     }],
+          //     label: 'Interest',
+          //     description: 'Select areas which you are interested',
+          //   }
+          // },
+          // {
+          //   type: 'radio',
+          //   key: 'title1',
+          //   templateOptions: {
+          //     options: [{
+          //       label: 'Mr.',
+          //       value: 'mr',
+          //     }, {
+          //       label: 'Mrs',
+          //       value: 'mrs',
+          //     }],
+          //     label: 'Title 1',
+          //     description: 'Select a title that suits your description',
+          //     }
+          //   },
+          // {
+          //   className: 'col-md-4',
+          //   key: 'select',
+          //   type: 'select',
+          //   templateOptions: {
+          //     options: [{
+          //       label: 'Male',
+          //       value: 'male',
+          //     }, {
+          //       label: 'Female',
+          //       value: 'female',
+          //     }],
+          //     label: 'Gender',
+          //     placeholder: 'Select Gender',
+          //   },
+          // }, 
+          // {
+          //   className: 'col-md-4',
+          //   key: 'selectSuperHero',
+          //   type: 'select',
+          //   templateOptions: {
+          //     options: [],
+          //     label: 'Gender',
+          //     labelProp: 'name',
+          //     groupProp: 'gender',
+          //     placeholder: 'Select Gender',
+          //   },
+          //   lifecycle: {
+          //     onInit: (form, field) => {
+          //       field.templateOptions.options = this.sh.get();
+          //     },
+          //   },
+          // }, 
+          // {
+          //   key:'x',
+          //   type:'checkbox',
+          //   templateOptions:{
+          //     label:'X'
+          //   }
+          // },
+          // {
+          //   key: 'checked',
+          //   type: 'checkbox',
+          //   templateOptions: {
+          //     label: 'Check me out',
+          //     description: 'If you want to check me out, check this box',
+          //   },
+          // },
+          // {
+          //   key: 'textAreaVal',
+          //   type: 'textarea',
+          //   modelOptions: {
+          //     debounce: {
+          //       default: 2000,
+          //       blur: 0,
+          //     },
+          //     updateOn: 'default blur',
+          //   },
+          //   focus: true,
+          //   templateOptions: {
+          //     rows: 5,
+          //     cols: 20,
+          //     label: 'Message',
+          //     description: 'Please enter atleast 150 characters',
+          //   },
+          // }
+          
+           
+        
 
-      //  {
-      //   className: 'section-label',
-      //   template: '<hr/><div><strong>Address:</strong></div>',
-      // }, {
-      //   key: 'address',
-      //   className: 'row',
-      //   wrappers: ['panel'],
-      //   templateOptions: {
-      //     title: 'Address',
-      //   },
-      //   fieldGroup: [{
-      //     className: 'col-md-6',
-      //     type: 'input',
-      //     key: 'street',
-      //     validators: {
-      //       validation: ['required'],
-      //     },
-      //     validation: {
-      //       messages: {
-      //         required: 'WOW!! Enter the Street',
-      //       },
-      //     },
-      //     defaultValue: '204 Causley Ave. ',
-      //     templateOptions: {
-      //       label: 'Street',
-      //       placeholder: '604 Causley Ave. ',
-      //       description: 'Enter a valid US Address',
-      //     },
-      //   }, {
-      //     className: 'col-md-3',
-      //     type: 'input',
-      //     key: 'city',
-      //     templateOptions: {
-      //       label: 'City',
-      //       placeholder: 'Arlington',
-      //     },
-      //     validation: {
-      //       messages: {
-      //         city: 'City: atleast 3',
-      //       },
-      //     },
-      //     validators: {
-      //       city: {
-      //         expression: (control: FormControl) => control.value && control.value.length > 3,
-      //         message: `City: Should have atleast 3 Characters`,
-      //       },
-      //     },
-      //   }, {
-      //     className: 'col-md-3',
-      //     type: 'input',
-      //     key: 'zip',
-      //     templateOptions: {
-      //       type: 'number',
-      //       label: 'Zip',
-      //       placeholder: '76010',
-      //       max: 99999,
-      //       min: 11111,
-      //       minLength: 5,
-      //       maxLength: 5,
-      //       pattern: '([0-9]{5})?',
-      //       required: true,
-      //       step: 500,
-      //     },
-      //     validators: {
-      //       zipCode: (control: FormControl) => control.value && control.value.length === 5,
-      //     },
-      //   }],
-      // }, {
-      //   key: 'checked',
-      //   type: 'checkbox',
-      //   templateOptions: {
-      //     label: 'Check me out',
-      //     description: 'If you want to check me out, check this box',
-      //   },
-      // }, {
-      //   type: 'multicheckbox',
-      //   key: 'interest',
-      //   className: 'col-md-6',
-      //   templateOptions: {
-      //     options: [{
-      //       key: 'sports',
-      //       value: 'Sports',
-      //     }, {
-      //       key: 'movies',
-      //       value: 'Movies',
-      //     }, {
-      //       key: 'others',
-      //       value: 'Others',
-      //     }],
-      //     label: 'Interest',
-      //     description: 'Select areas which you are interested',
-      //   },
-      // }, {
-      //   type: 'multicheckbox',
-      //   key: 'hobbies',
-      //   className: 'col-md-6',
-      //   templateOptions: {
-      //     options: [{
-      //       key: 'sports',
-      //       value: 'Sports',
-      //     }, {
-      //       key: 'movies',
-      //       value: 'Movies',
-      //     }, {
-      //       key: 'languages',
-      //       value: 'Languages',
-      //     }],
-      //     label: 'Hobbies',
-      //     description: 'Select areas which you are interested',
-      //   },
-      // }, {
-      //   key: 'otherInterest',
-      //   type: 'horizontalInput',
-      //   hideExpression: '!model.interest.others',
-      //   templateOptions: {
-      //     rows: 5,
-      //     cols: 20,
-      //     placeholder: 'Type a paragraph about your interest...',
-      //     label: 'Other Interest',
-      //   },
-      // }, {
-      //   key: 'textAreaVal',
-      //   type: 'textarea',
-      //   modelOptions: {
-      //     debounce: {
-      //       default: 2000,
-      //       blur: 0,
-      //     },
-      //     updateOn: 'default blur',
-      //   },
-      //   focus: true,
-      //   templateOptions: {
-      //     rows: 5,
-      //     cols: 20,
-      //     label: 'Message (Type a paragraph...)',
-      //     description: 'Please enter atleast 150 characters',
-      //   },
-      // }, {
-      //   key: 'toggleVal',
-      //   type: 'toggle',
-      //   templateOptions: {
-      //     isAlert: true,
-      //     isLarge: false,
-      //   },
-      // }, {
-      //   className: 'section-label',
-      //   template: '<hr/><div><strong>Nested property keys:</strong></div>',
-      // }, {
-      //   key: 'nested.property.magic',
-      //   type: 'input',
-      //   templateOptions: {
-      //     label: 'Nested property',
-      //     title: 'Nested Property',
-      //     templateManipulators: {
-      //       preWrapper: [() => 'panel'],
-      //     },
-      //   },
-      // }, {
-      //   key: 'nested.property.title',
-      //   type: 'radio',
-      //   templateOptions: {
-      //     options: [{
-      //       key: 'mr',
-      //       value: 'Mr.',
-      //     }, {
-      //       key: 'mrs',
-      //       value: 'Mrs',
-      //     }, {
-      //       key: 'miss',
-      //       value: 'Miss',
-      //     }],
-      //     label: 'Nested Title',
-      //     description: 'Select a title that suits your description',
-      //   },
-      // },
-      // {
-      //   key: 'nested.arrays.0.item',
-      //   type: 'input',
-      //   templateOptions: {
-      //     label: 'Array with dots',
-      //   },
-      //   defaultValue: 'Default Value A',
-      //   parsers: [(value) => (value || '').toUpperCase()],
-      // }, {
-      //   key: 'nested.arrays[1].item',
-      //   type: 'input',
-      //   templateOptions: {
-      //     label: 'Array property',
-      //   },
-      //   defaultValue: 'Default Value B',
-      //   parsers: [(value) => (value || '').toUpperCase()],
-      // }, {
-      //   type: 'repeatSection',
-      //   key: 'investments',
-      //   fieldArray: {
-      //     className: 'row',
-      //     templateOptions: {
-      //       btnText: 'Add another investment',
-      //     },
-      //     fieldGroup: [
-      //       {
-      //         className: 'col-md-4',
-      //         type: 'input',
-      //         key: 'investmentName',
-      //         templateOptions: {
-      //           label: 'Name of Investment:',
-      //           required: true,
-      //         },
-      //       },
-      //       {
-      //         type: 'input',
-      //         key: 'investmentDate',
-      //         className: 'col-xs-4',
-      //         optionsTypes: ['dateFormat'],
-      //         templateOptions: {
-      //           label: 'Date of Investment:',
-      //         },
-      //       },
-      //       {
-      //         type: 'input',
-      //         key: 'stockIdentifier',
-      //         className: 'col-md-4',
-      //         templateOptions: {
-      //           label: 'Stock Identifier:',
-      //           addonRight: {
-      //             class: 'fa fa-code',
-      //             onClick: (to, fieldType, $event) => console.log(to, fieldType, $event),
-      //           },
-      //         },
-      //       },
-      //     ],
-      //   },
-      // },
+
     ];
 
     setTimeout(() => this.userFields = userFields);
