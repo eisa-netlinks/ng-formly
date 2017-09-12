@@ -16,6 +16,7 @@ import {
   FormlyWrapperDescription,
   FormlyWrapperValidationMessages,
   FormlyWrapperFieldset,
+  Bootstrapper
 } from './wrappers/wrappers';
 
 export const FIELD_TYPE_COMPONENTS = [
@@ -33,6 +34,7 @@ export const FIELD_TYPE_COMPONENTS = [
   FormlyWrapperValidationMessages,
   FormlyWrapperFieldset,
   FormlyWrapperAddons,
+  Bootstrapper
 ];
 
 export const BOOTSTRAP_FORMLY_CONFIG: ConfigOption = {
@@ -40,32 +42,32 @@ export const BOOTSTRAP_FORMLY_CONFIG: ConfigOption = {
     {
       name: 'input',
       component: FormlyFieldInput,
-      wrappers: ['fieldset', ],
+      wrappers: ['bootstrapper'],
     },
     {
       name: 'checkbox',
       component: FormlyFieldCheckbox,
-      wrappers: ['fieldset'],
+      wrappers: ['bootstrapper'],
     },
     {
       name: 'radio',
       component: FormlyFieldRadio,
-      wrappers: ['fieldset'],
+      wrappers: ['bootstrapper'],
     },
     {
       name: 'select',
       component: FormlyFieldSelect,
-      wrappers: ['fieldset', ],
+      wrappers: ['bootstrapper'],
     },
     {
       name: 'textarea',
       component: FormlyFieldTextArea,
-      wrappers: ['fieldset'],
+      wrappers: ['bootstrapper'],
     },
     {
       name: 'multicheckbox',
       component: FormlyFieldMultiCheckbox,
-      wrappers: ['fieldset'],
+      wrappers: ['bootstrapper'],
     },
   ],
   wrappers: [
@@ -74,6 +76,7 @@ export const BOOTSTRAP_FORMLY_CONFIG: ConfigOption = {
     {name: 'validation-message', component: FormlyWrapperValidationMessages},
     {name: 'fieldset', component: FormlyWrapperFieldset},
     {name: 'addons', component: FormlyWrapperAddons},
+    {name: 'bootstrapper', component: Bootstrapper},
   ],
   manipulators: [
     {class: TemplateDescription, method: 'run'},

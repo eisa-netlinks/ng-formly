@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, Input, SimpleChanges, HostBinding } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, FormArray } from '@angular/forms';
 import { FormlyValueChangeEvent } from './../services/formly.event.emitter';
 import { FormlyFieldConfig } from './formly.field.config';
@@ -22,11 +22,14 @@ export class FormlyForm implements OnChanges {
   @Input() form: FormGroup = new FormGroup({});
   @Input() fields: FormlyFieldConfig[] = [];
   @Input() options: any;
+  @HostBinding('class') classes;
   /** @internal */
   @Input() buildForm: boolean = true;
   private initialModel: any;
 
-  constructor(private formlyBuilder: FormlyFormBuilder) {}
+  constructor(private formlyBuilder: FormlyFormBuilder) {
+    
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['fields']) {
@@ -40,6 +43,7 @@ export class FormlyForm implements OnChanges {
     } else if (changes['model'] && this.fields && this.fields.length > 0) {
       this.form.patchValue(this.model);
     }
+    this.classes = this.options.viewMode ? 'form-horizontal form-material' :'form-material';
   }
 
   fieldModel(field: FormlyFieldConfig) {

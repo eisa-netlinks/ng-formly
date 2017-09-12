@@ -8,7 +8,7 @@ import { FieldType } from '../../core/core';
       [rows]="to.rows" class="form-control"
       [formlyAttributes]="field">
     </textarea>
-    <span *ngIf="options.viewMode" class="form-control  view-mode">{{formControl.value}}<span>
+    <p *ngIf="options.viewMode" class="form-control-static ">{{formControl.value}}</p>
   `,
 })
 export class FormlyFieldTextArea extends FieldType {

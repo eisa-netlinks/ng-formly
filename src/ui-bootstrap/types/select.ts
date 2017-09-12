@@ -30,7 +30,7 @@ export class SelectOption {
        <option *ngIf="!item.group" [value]="item.value">{{item.label}}</option>
       </ng-container>
     </select>
-    <span *ngIf="options.viewMode" class="form-control  view-mode">{{valueLabel}}<span>
+    <p *ngIf="options.viewMode" class="form-control-static view-mode">{{valueLabel}}</p>
   `,
 })
 export class FormlyFieldSelect extends FieldType {
