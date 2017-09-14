@@ -32,7 +32,7 @@ export class FormlyForm implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['fields']) {
+    if (changes['fields'] || changes['options']) {
       this.model = this.model || {};
       this.form = this.form || (new FormGroup({}));
       this.setOptions();
@@ -40,10 +40,12 @@ export class FormlyForm implements OnChanges {
         this.formlyBuilder.buildForm(this.form, this.fields, this.model, this.options);
       }
       this.updateInitialValue();
-    } else if (changes['model'] && this.fields && this.fields.length > 0) {
+    }
+    if (changes['model'] && this.fields && this.fields.length > 0) {
       this.form.patchValue(this.model);
     }
     this.classes = this.options.viewMode ? 'form-horizontal form-material' :'form-material';
+    console.log("hei")
   }
 
   fieldModel(field: FormlyFieldConfig) {
