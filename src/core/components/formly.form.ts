@@ -45,7 +45,6 @@ export class FormlyForm implements OnChanges {
       this.form.patchValue(this.model);
     }
     this.classes = this.options.viewMode ? 'form-horizontal form-material' :'form-material';
-    console.log("hei")
   }
 
   fieldModel(field: FormlyFieldConfig) {
